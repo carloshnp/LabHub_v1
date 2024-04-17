@@ -1,6 +1,6 @@
 carloshnp: About redux stores, how do they work, and how can I acheive the same behaviour by using the Remix Framework?
 
-GitHub Copilot: Redux is a predictable state container for JavaScript apps. It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test. 
+GitHub Copilot: Redux is a predictable state container for JavaScript apps. It helps you write applications that behave consistently, run in different environments (client, server, and native), and are easy to test.
 
 Redux works by having a central store that holds the entire state of the application. Each component can access the stored state without having to send down props from one component to another. There are three building parts: actions, store, and reducers.
 

@@ -1,7 +1,13 @@
+import EquipmentBlueprint from "./Blueprint";
+import LaserControl from "./Original/Opotek Opolette 532/LaserMain";
+import MonochromatorControl from "./Original/Oriel Cornerstone 260/MonochromatorMain";
+
 export default function EquipmentCabinet() {
     return (
-        <div className="h-full w-fit bg-[#777777] p-4">
-            <h1>This is a equipment Cabinet.</h1>
+        <div className="flex overflow-auto">
+            <MonochromatorControl />
+            <LaserControl />
+            <EquipmentBlueprint />
         </div>
     )
 };
