@@ -87,9 +87,21 @@ const MonochromatorControl = () => {
 
     const handleConnect = async () => {
         try {
-            const response = await window.electronAPI.makeApiRequest({ url: `${URL}/connect`, method: 'GET' });
+            const response = await window.electronAPI.makeApiRequest({
+                url: `${URL}/execute`,
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "equipment_name": "monochromator",
+                    "http_method": "POST",
+                    "equipment_method": "connect",
+                    "params": {}
+                })
+            });
             console.log('API Response:', response); // Log the response
-            setConnection(response)
+            setConnection(response);
         } catch (error) {
             console.error('Error in API call:', error); // Log the detailed error
         }

@@ -4,5 +4,6 @@ node_modules
 /build
 /public/build
 .env
-
+labhub_server/.venv
+labhub_server/venv
 out/

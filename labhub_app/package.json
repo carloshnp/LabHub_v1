@@ -1,9 +1,10 @@
 {
   "name": "remix-electron-template",
-  "description": "",
-  "version": "0.0.0",
+  "description": "LabHub connects lab equipment with modular setup for measurements.",
+  "version": "0.0.1",
   "private": true,
   "main": "desktop/main.js",
+  "author": "Carlos Pereira <carloshnpwork@gmail.com>",
   "scripts": {
     "clean": "del-cli dist desktop/build public/build",
     "dev": "npm run clean && cross-env NODE_ENV=development npm-run-all --parallel --print-label --race dev:*",
@@ -11,14 +12,29 @@
     "dev:nodemon": "wait-on file:desktop/main.js && nodemon .",
     "build": "npm run clean && remix build && electron-builder",
     "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make"
+    "package": "electron-builder --dir",
+    "make": "electron-builder --mac --win --linux",
+    "publish": "electron-builder --publish=always",
+    "app:dir": "electron-builder --dir",
+    "app:dist": "electron-builder"
   },
   "build": {
+    "appId": "com.example.yourapp",
+    "productName": "LabHub",
     "files": [
       "desktop",
       "public",
       "remix.config.js"
+    ],
+    "mac": {
+      "category": "your.app.category.type"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "carloshnp",
+        "repo": "LabHub_v1"
+      }
     ]
   },
   "dependencies": {
@@ -27,7 +43,7 @@
     "@remix-run/server-runtime": "^1.16.1",
     "@remix-run/web-stream": ">=1.0.3",
     "chart.js": "^4.4.2",
-    "electron-builder": "^24.13.3",
+    "dotenv": "^16.4.5",
     "electron-reloader": "^1.2.3",
     "electron-squirrel-startup": "^1.0.0",
     "fast-glob": "^3.2.12",
@@ -41,7 +57,8 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-plotly.js": "^2.6.0",
-    "remix-electron": "latest"
+    "remix-electron": "latest",
+    "electron-updater": "^4.6.5"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.3.1",
@@ -50,6 +67,8 @@
     "@electron-forge/maker-squirrel": "^7.3.1",
     "@electron-forge/maker-zip": "^7.3.1",
     "@electron-forge/plugin-auto-unpack-natives": "^7.3.1",
+    "@electron-forge/plugin-fuses": "^7.4.0",
+    "@electron-forge/publisher-github": "^7.4.0",
     "@remix-run/dev": "^1.16.1",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
@@ -61,7 +80,8 @@
     "npm-run-all": "^4.1.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.0.4",
-    "wait-on": "^7.0.1"
+    "wait-on": "^7.0.1",
+    "electron-builder": "^24.13.3"
   },
   "sideEffects": false
 }

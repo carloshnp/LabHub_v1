@@ -1,12 +1,6 @@
 from fastapi import FastAPI, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 
-import clr
-
-clr.AddReference("Cornerstone")
-import CornerstoneDll
-
-
 class Monochromator:
     def __init__(self):
         self.mono = None
@@ -17,6 +11,7 @@ class Monochromator:
             print(self.mono)
             connection = self.mono.connect()
             if not connection:
+                print('not connection')
                 raise IOError("Monochromator not found")
             print("Mono connected")
             return connection
@@ -58,6 +53,7 @@ HOST = "127.0.0.1"
 PORT = 8000
 
 mono = Monochromator()
+print(mono)
 
 app = FastAPI()
 

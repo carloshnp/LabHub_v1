@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
-from srsinst.sr860 import SR860
+# from srsinst.sr860 import SR860
 import time
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -45,38 +45,38 @@ class LockInSR860:
             print("Exception: ", e)
             return None
 
-#### SAMPLE READING FROM LOCK IN
+### SAMPLE READING FROM LOCK IN
 
-# time_readings = []
-# r_measurements = []
-# sensitivity = 0
+time_readings = []
+r_measurements = []
+sensitivity = 0
 
-# lock_in = LockInSR860()
-# lock_in.connect()
+lock_in = LockInSR860()
+lock_in.connect()
 
-# for i in range(100):
-#     time.sleep(0.5)
-#     R = float(lock_in.get_R())
-#     time_adjust = i * 0.1
-#     time_readings.append(time_adjust)
-#     r_measurements.append(R)
-#     print(R)
+for i in range(100):
+    time.sleep(0.5)
+    R = float(lock_in.get_R())
+    time_adjust = i * 0.1
+    time_readings.append(time_adjust)
+    r_measurements.append(R)
+    print(R)
 
-# sensitivity = lock_in.get_sensitivity()
-# time_constant = lock_in.get_time_constant()
+sensitivity = lock_in.get_sensitivity()
+time_constant = lock_in.get_time_constant()
 
-# df = pd.DataFrame({'time': time_readings, 'R': r_measurements})
+df = pd.DataFrame({'time': time_readings, 'R': r_measurements})
 
-# fig, ax = plt.subplots()
-# ax.plot(df['time'], df['R'], label=f'Sensitivity: {sensitivity}, Time Constant: {time_constant}')
-# ax.set_xlabel('Time (seconds)')
-# ax.set_ylabel('R (Volt)')
-# ax.set_ylim(auto=True)  # Set the limits of the Y-axis
-# ax.set_title('R vs Time')
-# ax.legend()
-# plt.tight_layout()
-# plt.savefig('plot.png')
-# plt.show()
+fig, ax = plt.subplots()
+ax.plot(df['time'], df['R'], label=f'Sensitivity: {sensitivity}, Time Constant: {time_constant}')
+ax.set_xlabel('Time (seconds)')
+ax.set_ylabel('R (Volt)')
+ax.set_ylim(auto=True)  # Set the limits of the Y-axis
+ax.set_title('R vs Time')
+ax.legend()
+plt.tight_layout()
+plt.savefig('plot.png')
+plt.show()
 
 
 

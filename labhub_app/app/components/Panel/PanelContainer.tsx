@@ -1,11 +1,10 @@
-import EquipmentPanel from "./EquipmentPanel"
-import Panel from "./Panel"
+import EquipmentPanel from "~/components/Panel/EquipmentPanel";
+import { PlPle } from "../equipments/PlPle";
 
 export default function PanelContainer() {
-    return (
-        <div className="w-full h-full flex p-8">
-            <EquipmentPanel />
-            <Panel />
-        </div>
-    )
-};
+  return (
+    <div className="h-full flex-grow">
+      <PlPle />
+    </div>
+  );
+}
